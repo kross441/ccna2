@@ -1,7 +1,7 @@
 !TASK1: COLLAPSED BACKBONE: BASIC LAYER3 CONFIGURATION.
 !@@@CORE SWITCH SA TAAS ( LINE 3 to 33 PASTE TO COREtaas SWITCH )
 config t
-   hostname COREtaas-12
+   hostname COREtaas-21
    enable secret pass
    service password-encryption
    no logging console
@@ -16,19 +16,19 @@ config t
       exec-timeout 0 0
    Int Vlan 1
      no shutdown
-	 ip add 10.12.1.2 255.255.255.0
+	 ip add 10.21.1.2 255.255.255.0
 	 description MGMTDATA
    Int Vlan 10
      no shutdown
-	 ip add 10.12.10.2 255.255.255.0
+	 ip add 10.21.10.2 255.255.255.0
 	 description WIRELESS
    Int Vlan 50
      no shutdown
-	 ip add 10.12.50.2 255.255.255.0
+	 ip add 10.21.50.2 255.255.255.0
 	 description IPCCTV
    Int Vlan 100
      no shutdown
-	 ip add 10.12.100.2 255.255.255.0
+	 ip add 10.21.100.2 255.255.255.0
 	 description VOICEVLAN
 end
 
