@@ -311,12 +311,12 @@ conf t
   codec g711ULAW
  dial-peer voice 12 Voip
   destination-pattern 12..
-  session target ipv4:10.21.100.8
+  session target ipv4:10.12.100.8
   codec g711ULAW
- dial-peer voice 21 Voip
-  destination-pattern 21..
-  session target ipv4:10.21.100.8
-  codec g711ULAW
+ !dial-peer voice 21 Voip
+  !destination-pattern 21..
+ !session target ipv4:10.21.100.8
+  !codec g711ULAW
  dial-peer voice 22 Voip
   destination-pattern 22..
   session target ipv4:10.22.100.8
@@ -335,7 +335,7 @@ conf t
   codec g711ULAW
  dial-peer voice 42 Voip
   destination-pattern 42..
-  session target ipv4:10.21.100.8
+  session target ipv4:10.42.100.8
   codec g711ULAW
  dial-peer voice 51 Voip
   destination-pattern 51..
@@ -478,7 +478,7 @@ end
 TASK4***TASK4***TASK4*** ( FORTINET ROUTING 80E and 60E Configurations )
 !OSPF Routing on Fortinet ( Line 480-500 Paste on FORTINET 60E or 80E )
 config router ospf 
- set router-id 12.0.0.1
+ set router-id 21.0.0.1
  set log-neighbour-changes enable
  config area
   edit 0.0.0.0
@@ -495,7 +495,7 @@ config router ospf
    next
   edit 3
    set area 0.0.0.0
-   set prefix  12.0.0.1 255.255.255.255
+   set prefix  21.0.0.1 255.255.255.255
    end
  end
 
