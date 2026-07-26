@@ -169,17 +169,17 @@ config t
 ip routing
 ip dhcp pool CAMERA6
 host 10.21.50.6 255.255.255.0
-client-identifier 001a.070a.c334
+client-identifier 001a.0711.561e
 ip dhcp pool CAMERA8
 host 10.21.50.8 255.255.255.0
-client-identifier 001a.0708.6f17
+client-identifier 001a.070a.bd5f
 end
 show ip dhcp binding
 
 !TASK2***TASK2***TASK2***
 !@@@CME ROUTE CONFIG (Call Manager Express) ( Line 181-199 Paste on CME)
 config t
-   hostname CME-12
+   hostname CME-21
    enable secret pass
    service password-encryption
    no logging console
@@ -205,7 +205,7 @@ voice service voip
  allow-connections h323 to sip
  allow-connections sip to h323
  allow-connections sip to sip
- supplementary-service h450.21
+ supplementary-service h450.12
 sip
  transport switch udp tcp
  bind control source-interface gi0/0/0
@@ -221,48 +221,48 @@ voice register global
  create profile
 !
 voice register dn 1
- number 1211
- name 1211
+ number 2111
+ name 2111
  allow watch
 voice register dn 2
- number 1222
- name 1222
+ number 2122
+ name 2122
  allow watch
 voice register dn 3
- number 1233
- name 1233
+ number 2133
+ name 2133
  allow watch
 voice register dn 4
- number 1244
- name 1244
+ number 2144
+ name 2144
  allow watch
 voice register dn 5
- number 1255
- name 1255
+ number 2155
+ name 2155
  allow watch
 voice register dn 6
- number 1266
- name 1266
+ number 2166
+ name 2166
  allow watch
 voice register dn 7
- number 1277
- name 1277
+ number 2177
+ name 2177
  allow watch
 voice register dn 8
- number 1288
- name 1288
+ number 2188
+ name 2188
  allow watch
 voice register dn 9
- number 1299
- name 1299
+ number 2199
+ name 2199
  allow watch
 voice register dn 10
- number 1267
- name 1267
+ number 2167
+ name 2167
  allow watch
 !
 voice register pool 1
- id mac 00bc.60bf.47c6
+ id mac dcf7.19d8.f4fc
  number 1 dn 1
  number 2 dn 2
  number 3 dn 3
@@ -274,7 +274,7 @@ voice register pool 1
  type 8851
 !
 voice register pool 2
- id mac dcf7.19d9.b574
+ id mac dcf7.19d9.d39e
  number 1 dn 6
  number 2 dn 8
  number 3 dn 9
