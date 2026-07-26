@@ -430,7 +430,7 @@ config system interface
 edit loopback1
   set vdom root
   set mode static
-  set ip 12.0.0.1 255.255.255.255
+  set ip 21.0.0.1 255.255.255.255
   set allowaccess ping
   set type loopback
   set status up
@@ -469,7 +469,7 @@ config system interface
 edit loopback1
   set vdom root
   set mode static
-  set ip 12.0.0.1 255.255.255.255
+  set ip 21.0.0.1 255.255.255.255
   set allowaccess ping
   set type loopback
   set status up
