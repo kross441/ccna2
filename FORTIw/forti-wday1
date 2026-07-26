@@ -35,7 +35,7 @@ end
 !( LINE 37 to 71 PASTE TO COREBABA SWITCH )
 !@@@LeafSwitchONLY
 config t
-   hostname COREbaba-12
+   hostname COREbaba-21
    enable secret pass
    service password-encryption
    no logging console
@@ -51,22 +51,22 @@ config t
    Int Gi 0/1
      no shutdown
 	  no switchport
-	  ip add 10.12.12.4 255.255.255.0
+	  ip add 10.21.21.4 255.255.255.0
    Int Vlan 1
      no shutdown
-	 ip add 10.12.1.4 255.255.255.0
+	 ip add 10.21.1.4 255.255.255.0
 	 description MGMTDATA
    Int Vlan 10
      no shutdown
-	 ip add 10.12.10.4 255.255.255.0
+	 ip add 10.21.10.4 255.255.255.0
 	 description WIRELESS
    Int Vlan 50
      no shutdown
-	 ip add 10.12.50.4 255.255.255.0
+	 ip add 10.21.50.4 255.255.255.0
 	 description IPCCTV
    Int Vlan 100
      no shutdown
-	 ip add 10.12.100.4 255.255.255.0
+	 ip add 10.21.100.4 255.255.255.0
 	 description VOICEVLAN
 end
 
@@ -96,31 +96,31 @@ sh int po1 | inc BW
 !DHCP: DYNAMIC HOST CONFIGURATION PROTOCOL
 !@@@LEAF SWITCH (Line 98-124 Paste on COREbaba)
 config t
-ip dhcp Excluded-add 10.12.1.1 10.12.1.100
-ip dhcp Excluded-add 10.12.10.1 10.12.10.100
-ip dhcp Excluded-add 10.12.50.1 10.12.50.100
-ip dhcp Excluded-add 10.12.100.1 10.12.100.100
+ip dhcp Excluded-add 10.21.1.1 10.21.1.100
+ip dhcp Excluded-add 10.21.10.1 10.21.10.100
+ip dhcp Excluded-add 10.21.50.1 10.21.50.100
+ip dhcp Excluded-add 10.21.100.1 10.21.100.100
 ip dhcp pool MGMTDATA
-   network 10.12.1.0 255.255.255.0
-   default-router 10.12.1.4
+   network 10.21.1.0 255.255.255.0
+   default-router 10.21.1.4
    domain-name MGMTDATA.COM
-   dns-server 10.12.1.10
+   dns-server 10.21.1.10
 ip dhcp pool WIFIDATA
-   network 10.12.10.0 255.255.255.0
-   default-router 10.12.10.4
+   network 10.21.10.0 255.255.255.0
+   default-router 10.21.10.4
    domain-name WIFIDATA.COM
-   dns-server 10.12.1.10
+   dns-server 10.21.1.10
 ip dhcp pool IPCCTV
-   network 10.12.50.0 255.255.255.0
-   default-router 10.12.50.4
+   network 10.21.50.0 255.255.255.0
+   default-router 10.21.50.4
    domain-name IPCCTV.COM
-   dns-server 10.12.1.10
+   dns-server 10.21.1.10
 ip dhcp pool VOICEVLAN
-   network 10.12.100.0 255.255.255.0
-   default-router 10.12.100.4
+   network 10.21.100.0 255.255.255.0
+   default-router 10.21.100.4
    domain-name VOICEVLAN.COM
-   dns-server 10.12.1.10
-   option 150 ip 10.12.100.8
+   dns-server 10.21.1.10
+   option 150 ip 10.21.100.8
    END
 
 !!CREATING AND PLACING PORTS INSIDEAVLAN: (Line 127-165 Paste on COREbaba)
@@ -168,10 +168,10 @@ Int Fa 0/7
 config t
 ip routing
 ip dhcp pool CAMERA6
-host 10.12.50.6 255.255.255.0
+host 10.21.50.6 255.255.255.0
 client-identifier 001a.070a.c334
 ip dhcp pool CAMERA8
-host 10.12.50.8 255.255.255.0
+host 10.21.50.8 255.255.255.0
 client-identifier 001a.0708.6f17
 end
 show ip dhcp binding
@@ -194,7 +194,7 @@ config t
       exec-timeout 0 0
    Int Gi 0/0/0
      description CME
-     ip add 10.12.100.8 255.255.255.0
+     ip add 10.21.100.8 255.255.255.0
 	 no shutdown
  end
  
@@ -205,7 +205,7 @@ voice service voip
  allow-connections h323 to sip
  allow-connections sip to h323
  allow-connections sip to sip
- supplementary-service h450.12
+ supplementary-service h450.21
 sip
  transport switch udp tcp
  bind control source-interface gi0/0/0
@@ -214,7 +214,7 @@ sip
 voice register global
  mode cme
  no auto-register
- source-address 10.12.100.8 port 5060
+ source-address 10.21.100.8 port 5060
  max-dn 20
  max-pool 20
  authenticate register
@@ -311,7 +311,7 @@ conf t
   codec g711ULAW
  dial-peer voice 12 Voip
   destination-pattern 12..
-  session target ipv4:10.12.100.8
+  session target ipv4:10.21.100.8
   codec g711ULAW
  dial-peer voice 21 Voip
   destination-pattern 21..
@@ -335,7 +335,7 @@ conf t
   codec g711ULAW
  dial-peer voice 42 Voip
   destination-pattern 42..
-  session target ipv4:10.12.100.8
+  session target ipv4:10.21.100.8
   codec g711ULAW
  dial-peer voice 51 Voip
   destination-pattern 51..
@@ -383,16 +383,16 @@ conf t
 !@CME: (Call Manager Express) 
 config t
 router ospf 1
-router-id 10.12.100.8
-network 10.12.100.0  0.0.0.255  area 0
+router-id 10.21.100.8
+network 10.21.100.0  0.0.0.255  area 0
 end
 
 !OSPF on COREswitch ( Line 392-398 Paste on COREbaba )
 !@CoreBABA:
 config t
 router ospf 1
-router-id 10.12.12.4
-network 10.12.0.0  0.0.255.255 area 0
+router-id 10.21.21.4
+network 10.21.0.0  0.0.255.255 area 0
 int gi 0/1
  ip ospf network point-to-point
 end
@@ -412,7 +412,7 @@ end
 config system interface
  edit wan1
   set mode static
-  set ip 200.0.0.12 255.255.255.0 
+  set ip 200.0.0.21 255.255.255.0 
   set allowaccess ping https ssh telnet
   set role wan
   set alias "INTERNET"
@@ -420,7 +420,7 @@ config system interface
   next
  edit port1
   set mode static
-  set ip 10.12.12.1 255.255.255.0
+  set ip 10.21.21.1 255.255.255.0
   set allowaccess ping https ssh telnet http
   set role lan
   set alias "INTERNAL"
@@ -451,7 +451,7 @@ end
 config system interface
  edit wan1
   set mode static
-  set ip 200.0.0.12 255.255.255.0 
+  set ip 200.0.0.21 255.255.255.0 
   set allowaccess ping https ssh telnet
   set role wan
   set alias "INTERNET"
@@ -459,7 +459,7 @@ config system interface
   next
  edit internal1
   set mode static
-  set ip 10.12.12.1 255.255.255.0
+  set ip 10.21.21.1 255.255.255.0
   set allowaccess ping https ssh telnet http
   set role lan
   set alias "INTERNAL"
@@ -487,7 +487,7 @@ config router ospf
  config network
   edit 1
    set area 0.0.0.0
-   set prefix 10.12.12.0 255.255.255.0
+   set prefix 10.21.21.0 255.255.255.0
    next
   edit 2
    set area 0.0.0.0
@@ -527,7 +527,7 @@ GRION: get router info ospf neighbor
 GRIRTA: get router info routing-table all
 GRIRTO: get router info routing-table ospf
 
-TASK4***TASK4***TASK4*** ( FORTINET FIREWALL POLICY 80E and 60E Configurations ) or via (GUI Configurations 10.12.12.1)
+TASK4***TASK4***TASK4*** ( FORTINET FIREWALL POLICY 80E and 60E Configurations ) or via (GUI Configurations 10.21.21.1)
 !Edit Firewall Policy to call other classmates on FIREWALL (Fortinet for 60E OUTGOING) Para makalabas ( Line 531-543 Paste kay FORTINET 60E ) 
 config firewall policy
  edit 1
