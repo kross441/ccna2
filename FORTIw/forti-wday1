@@ -192,6 +192,7 @@ config t
       password pass
       login
       exec-timeout 0 0
+transport input all
    Int Gi 0/0/0
      description CME
      ip add 10.21.100.8 255.255.255.0
