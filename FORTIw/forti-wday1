@@ -169,10 +169,10 @@ config t
 ip routing
 ip dhcp pool CAMERA6
 host 10.62.50.6 255.255.255.0
-client-identifier ____mac address____
+client-identifier 001a.0706.c302
 ip dhcp pool CAMERA8
 host 10.62.50.8 255.255.255.0
-client-identifier _____mac address____
+client-identifier 001a.070b.472e
 end
 show ip dhcp binding
 
@@ -222,48 +222,48 @@ voice register global
  create profile
 !
 voice register dn 1
- number 2111
- name 2111
+ number 6211
+ name 6211
  allow watch
 voice register dn 2
- number 2122
- name 2122
+ number 6222
+ name 6222
  allow watch
 voice register dn 3
- number 2133
- name 2133
+ number 6233
+ name 6233
  allow watch
 voice register dn 4
- number 2144
- name 2144
+ number 6244
+ name 6244
  allow watch
 voice register dn 5
- number 2155
- name 2155
+ number 6255
+ name 6255
  allow watch
 voice register dn 6
- number 2166
- name 2166
+ number 6266
+ name 6266
  allow watch
 voice register dn 7
- number 2177
- name 2177
+ number 6277
+ name 6277
  allow watch
 voice register dn 8
- number 2188
- name 2188
+ number 6288
+ name 6288
  allow watch
 voice register dn 9
- number 2199
- name 2199
+ number 6299
+ name 6299
  allow watch
 voice register dn 10
- number 2167
- name 2167
+ number 6267
+ name 6267
  allow watch
 !
 voice register pool 1
- id mac ___ ip phone mac____
+ id mac 203a.0782.bd3b
  number 1 dn 1
  number 2 dn 2
  number 3 dn 3
@@ -275,7 +275,7 @@ voice register pool 1
  type 8851
 !
 voice register pool 2
- id mac ____ ip phone mac ____
+ id mac ccd8.c1fb.10b9
  number 1 dn 6
  number 2 dn 8
  number 3 dn 9
